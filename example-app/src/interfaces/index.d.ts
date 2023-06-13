@@ -2,7 +2,6 @@ export interface ICategory {
     id: string;
     title: string;
 }
-
 export interface IFile {
     name: string;
     percent: number;
@@ -12,7 +11,6 @@ export interface IFile {
     uid: string;
     url: string;
 }
-
 export interface IPost {
     id: string;
     title: string;
@@ -20,24 +18,19 @@ export interface IPost {
     categoryId: string;
     images: IFile[];
 }
-
-
 export interface ILabel {
     id: string;
     title: string;
     color: string;
 }
-
 export interface IPriority {
     id: string;
     title: string;
 }
-
 export interface IStatus {
     id: string;
     title: string;
 }
-
 export interface ITask {
     id: string;
     title: string;
@@ -49,7 +42,6 @@ export interface ITask {
     status: string;
     users: string;
 }
-
 export interface ITaskFilterVariables {
     title: string;
     label: string;
@@ -58,4 +50,11 @@ export interface ITaskFilterVariables {
     status: string;
     start_time: [Dayjs, Dayjs];
     end_time: [Dayjs, Dayjs];
+}export interface IAuthUser {
+    
+    id: string;
+    email: string;
+}export interface ILoginForm {
+    email: string;
+    password: string;
 }

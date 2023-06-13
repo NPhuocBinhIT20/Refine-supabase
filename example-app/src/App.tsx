@@ -25,6 +25,8 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import "@refinedev/antd/dist/reset.css";
 
 import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import { TaskList, TaskShow, TaskCreate, TaskEdit } from "./pages/task";
+import { UserList } from "./pages/user";
 import { supabaseClient } from "utility";
 
 
@@ -49,6 +51,17 @@ const App: React.FC = () => {
                               canDelete: true,
                           },
                       },
+                    {
+                        name: "users",
+                        list: "/users",
+                    },
+                    {
+                        name: "tasks",
+                        list: "/tasks",
+                        show: "/tasks/show/:id",
+                        create: "/tasks/create",
+                        edit: "/tasks/edit/:id",
+                    },
                   ]}
                   notificationProvider={notificationProvider}
                   options={{
@@ -82,6 +95,14 @@ const App: React.FC = () => {
                               <Route path="edit/:id" element={<PostEdit />} />
                               <Route path="show/:id" element={<PostShow />} />
                           </Route>
+                          <Route path="users" element={<UserList />} />
+
+                            <Route path="tasks">
+                                <Route index element={<TaskList />} />
+                                <Route path="edit/:id" element={<TaskEdit />} />
+                                <Route path="create" element={<TaskCreate />} />
+                                <Route path="show/:id" element={<TaskShow />} />
+                            </Route>
                       </Route>
 
                       <Route
@@ -132,7 +153,15 @@ const App: React.FC = () => {
                               element={<AuthPage type="updatePassword" />}
                           />
                       </Route>
-
+                      
+                      <Route
+                            element={
+                                <Authenticated fallback={<Outlet />}>
+                                    <NavigateToResource resource="users" />
+                                </Authenticated>
+                            }
+                        >
+                        </Route>
                       <Route
                           element={
                               <Authenticated>
