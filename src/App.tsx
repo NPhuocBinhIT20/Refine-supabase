@@ -26,7 +26,7 @@ import "@refinedev/antd/dist/reset.css";
 
 import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
 import { TaskList, TaskShow, TaskCreate, TaskEdit } from "./pages/task";
-import { UserList } from "./pages/user";
+import { UserList, UserEdit, UserShow } from "./pages/user";
 import { supabaseClient } from "utility";
 
 
@@ -54,6 +54,8 @@ const App: React.FC = () => {
                     {
                         name: "users",
                         list: "/users",
+                        edit: "/users/edit/:id",
+                        show: "/users/show/:id"
                     },
                     {
                         name: "tasks",
@@ -95,7 +97,11 @@ const App: React.FC = () => {
                               <Route path="edit/:id" element={<PostEdit />} />
                               <Route path="show/:id" element={<PostShow />} />
                           </Route>
-                          <Route path="users" element={<UserList />} />
+                          <Route path="/users">
+                              <Route index element={<UserList />} />
+                              <Route path="edit/:id" element={<UserEdit />} />
+                              <Route path="show/:id" element={<UserShow />} />
+                          </Route>
 
                             <Route path="tasks">
                                 <Route index element={<TaskList />} />

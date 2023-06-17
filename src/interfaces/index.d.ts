@@ -50,11 +50,15 @@ export interface ITaskFilterVariables {
     status: string;
     start_time: [Dayjs, Dayjs];
     end_time: [Dayjs, Dayjs];
-}export interface IAuthUser {
-    
+}
+export interface IAuthUser {
     id: string;
     email: string;
-}export interface ILoginForm {
+    phone: string;
+    fullname: string;
+    avatar: string;
+}
+export interface ILoginForm {
     email: string;
     password: string;
 }

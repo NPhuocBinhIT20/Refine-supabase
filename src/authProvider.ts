@@ -74,7 +74,7 @@ const authProvider: AuthBindings = {
         };
       }
 
-      if (data) {
+      if (data) {                            
         return {
           success: true,
           redirectTo: "/",
@@ -131,6 +131,7 @@ const authProvider: AuthBindings = {
       },
     };
   },
+  
   updatePassword: async ({ password }) => {
     try {
       const { data, error } = await supabaseClient.auth.updateUser({
@@ -230,7 +231,7 @@ const authProvider: AuthBindings = {
     if (data?.user) {
       return {
         ...data.user,
-        name: data.user.email,
+        email: data.user.email,
       };
     }
 
